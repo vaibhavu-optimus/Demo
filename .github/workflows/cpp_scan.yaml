@@ -25,11 +25,11 @@ jobs:
         run: snyk auth $SNYK_TOKEN
 
       - name: Run Snyk Code Scan (SAST)
-        run: snyk code test --severity-threshold=low --report || true
+        run: snyk code test --severity-threshold=low --json > snyk-report.json || true
 
       - name: Upload Snyk test results
         if: failure()  # Only upload if the test fails
         uses: actions/upload-artifact@v3
         with:
           name: snyk-results
-          path: snyk-report.json  # Or any output file you want to store from Snyk
+          path: snyk-report.json  # The output file from Snyk scan
