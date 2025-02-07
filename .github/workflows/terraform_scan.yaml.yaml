@@ -1,13 +1,16 @@
-name: Snyk Security Scan
+name: Terraform Security Scan
 
 on:
   push:
-    branches:
-      - '**'
+    paths:
+      - 'main.tf'
+  pull_request:
+    paths:
+      - 'main.tf'
 
 jobs:
-  snyk_scan:
-    name: Run Snyk Security Scan
+  terraform_snyk_scan:
+    name: Run Snyk Terraform Scan
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +28,5 @@ jobs:
       - name: Run Snyk Infrastructure as Code (IaC) Scan
         run: snyk iac test --severity-threshold=low --report
 
-      - name: Run Snyk Open Source Scan (Optional)
-        run: snyk test --severity-threshold=low --report || true  # Prevent build failure
-
-      - name: Monitor Snyk for Continuous Security Monitoring
+      - name: Monitor Snyk for Continuous Security Tracking
         run: snyk monitor

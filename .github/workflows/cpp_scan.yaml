@@ -1,0 +1,32 @@
+name: C++ Security Scan
+
+on:
+  push:
+    paths:
+      - 'vulnerable.cpp' 
+  pull_request:
+    paths:
+      - 'vulnerable.cpp'
+
+jobs:
+  snyk_cpp_scan:
+    name: Run Snyk C++ Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate with Snyk
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk auth $SNYK_TOKEN
+
+      - name: Run Snyk Code Scan (SAST)
+        run: snyk code test --severity-threshold=low --report || true
+
+      - name: Monitor Snyk for Continuous Security Tracking
+        run: snyk monitor
