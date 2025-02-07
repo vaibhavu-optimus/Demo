@@ -1,0 +1,32 @@
+name: Terraform Scan
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - main.tf
+  pull_request:
+    branches:
+      - main
+    paths:
+      - main.tf
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Snyk
+      uses: snyk/actions/setup@v2
+      with:
+        version: 'latest'
+
+    - name: Authenticate Snyk
+      run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+    - name: Test Terraform file
+      run: snyk iac test main.tf
