@@ -1,12 +1,17 @@
-name: C++ Security Scan hello
+name: Terraform Scan
 
 on:
   push:
     branches:
-      - 'dev'
+      - dev
     paths:
-      - 'vulnerable.cpp'
-
+      - 'main.tf'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'main.tf'
+  workflow_dispatch:
 jobs:
   snyk_cpp_scan:
     name: Run Snyk C++ Security Scan
