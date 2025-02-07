@@ -1,4 +1,4 @@
-name: C++ Security Scan
+name: C++ Security Scan hello
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
         run: snyk auth $SNYK_TOKEN
 
       - name: Run Snyk Code Scan (SAST)
-        run: snyk code test --severity-threshold=low --json > snyk-report.json || true
+        run: snyk code test
 
       - name: Upload Snyk test results
         if: failure()  # Only upload if the test fails
