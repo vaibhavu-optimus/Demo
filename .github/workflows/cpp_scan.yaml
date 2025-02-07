@@ -1,6 +1,7 @@
 name: C++ Scan
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
@@ -11,7 +12,6 @@ on:
       - main
     paths:
       - 'vulenrable.cpp'
-  workflow_dispatch:
 jobs:
   snyk_cpp_scan:
     name: Run Snyk C++ Security Scan
