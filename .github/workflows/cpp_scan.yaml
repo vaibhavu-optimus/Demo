@@ -34,7 +34,7 @@ jobs:
 
       - name: Upload Snyk test results
         if: failure()  # Only upload if the test fails
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: snyk-results
           path: snyk-report.json  # The output file from Snyk scan
