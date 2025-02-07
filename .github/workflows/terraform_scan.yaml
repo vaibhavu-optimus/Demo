@@ -11,6 +11,7 @@ on:
       - main
     paths:
       - main.tf
+  workflow_dispatch:
 
 jobs:
   snyk:
