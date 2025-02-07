@@ -1,0 +1,32 @@
+name: Snyk Security Scan
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  snyk_scan:
+    name: Run Snyk Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate with Snyk
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk auth $SNYK_TOKEN
+
+      - name: Run Snyk Infrastructure as Code (IaC) Scan
+        run: snyk iac test --severity-threshold=low --report
+
+      - name: Run Snyk Open Source Scan (Optional)
+        run: snyk test --severity-threshold=low --report || true  # Prevent build failure
+
+      - name: Monitor Snyk for Continuous Security Monitoring
+        run: snyk monitor
