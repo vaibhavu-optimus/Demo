@@ -5,12 +5,12 @@ on:
     branches:
       - '**'
     paths:
-      - main.tf
+      - 'main.tf'
   pull_request:
     branches:
       - main
     paths:
-      - main.tf
+      - 'main.tf'
   workflow_dispatch:
 
 jobs:
