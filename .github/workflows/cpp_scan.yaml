@@ -3,7 +3,7 @@ name: C++ Security Scan
 on:
   push:
     branches:
-      - dev
+      - 'dev'
     paths:
       - 'vulnerable.cpp'
 
