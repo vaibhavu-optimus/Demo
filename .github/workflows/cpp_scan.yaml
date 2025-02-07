@@ -2,7 +2,8 @@ name: C++ Security Scan
 
 on:
   push:
-    branch: '**'
+    branches:
+      - '**'
 
 jobs:
   snyk_cpp_scan:
@@ -12,6 +13,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
 
       - name: Install Snyk CLI
         run: npm install -g snyk
