@@ -2,6 +2,8 @@ name: C++ Security Scan
 
 on:
   push:
+    branches:
+      - '**'
     paths:
       - 'vulnerable.cpp'
 
