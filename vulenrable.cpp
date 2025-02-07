@@ -16,6 +16,3 @@ int main() {
     insecureInput();
     return 0;
 }
-
-//gvvvyvb 
-//yvyvvhghvhvv
