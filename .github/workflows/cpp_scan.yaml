@@ -2,8 +2,8 @@ name: C++ Security Scan
 
 on:
   push:
-    branches:
-      - '**'
+    paths:
+      - 'vulnerable.cpp'
 
 jobs:
   snyk_cpp_scan:
@@ -13,11 +13,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
 
       - name: Install Snyk CLI
         run: npm install -g snyk
@@ -30,5 +25,9 @@ jobs:
       - name: Run Snyk Code Scan (SAST)
         run: snyk code test --severity-threshold=low --report || true
 
-      - name: Monitor Snyk for Continuous Security Tracking
-        run: snyk monitor
+      - name: Upload Snyk test results
+              if: failure()  # Only upload if the test fails
+              uses: actions/upload-artifact@v3
+              with:
+                name: snyk-results
+                path: snyk-report.json  # Or any output file you want to store from Snyk
