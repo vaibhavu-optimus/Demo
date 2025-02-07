@@ -1,4 +1,4 @@
-name: Terraform Scan
+name: C++ Scan
 
 on:
   push:
