@@ -7,6 +7,8 @@ using namespace std;
 
 #define max 100
 
+const int var = 100;
+
 // Dangerous function: Uses gets(), which is unsafe
 void insecureInput() {
     char buffer[10];
