@@ -5,12 +5,12 @@ on:
     branches:
       - dev
     paths:
-      - 'main.tf'
+      - 'vulenrable.cpp'
   pull_request:
     branches:
       - main
     paths:
-      - 'main.tf'
+      - 'vulenrable.cpp'
   workflow_dispatch:
 jobs:
   snyk_cpp_scan:
