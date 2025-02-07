@@ -3,7 +3,7 @@ name: Terraform Scan
 on:
   push:
     branches:
-      - '**'
+      - dev
     paths:
       - 'main.tf'
   pull_request:
