@@ -12,6 +12,7 @@ void insecureInput() {
 }
 
 int main() {
+    int b;
     insecureInput();
     return 0;
 }
