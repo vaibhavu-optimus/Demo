@@ -12,7 +12,7 @@ void insecureInput() {
 }
 
 int main() {
-    int b;
+    int b, m;
     insecureInput();
     return 0;
 }
