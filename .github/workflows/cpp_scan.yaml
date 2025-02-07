@@ -3,10 +3,10 @@ name: C++ Security Scan
 on:
   push:
     paths:
-      - 'vulnerable.cpp' 
+      - './vulenrable.cpp' 
   pull_request:
     paths:
-      - 'vulnerable.cpp'
+      - './vulnerable.cpp'
 
 jobs:
   snyk_cpp_scan:
