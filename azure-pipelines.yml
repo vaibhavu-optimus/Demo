@@ -13,12 +13,4 @@ jobs:
     steps:
     - script: |
         echo 'Hello 2, $(HOSTNAME)'
-  - job: job3
-    steps:
-    - script: |
-        echo 'Hello 3, $(HOSTNAME)'
-  - job: job4
-    steps:
-    - script: |
-        echo 'Hello 4, $(HOSTNAME)'
 
